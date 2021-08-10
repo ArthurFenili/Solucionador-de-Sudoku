@@ -18,7 +18,7 @@ int espacosVazios(int sudoku[][N]) {
 }
 
 int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna) {
-  int i, eh_igual = 0;
+  int i, j, eh_igual = 0;
 
   for(i = 0; i<N; i++) {
     if(i != coluna && sudoku[linha][i] == numeroAtual) { // verifica na linha
@@ -31,7 +31,19 @@ int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna
     }
   }
 
-  // fazer função pra verificar no 3x3
+  int quadranteLinha = linha - (linha % 3);
+  int quadranteColuna = coluna = (coluna % 3);
+
+  for(i = 0; i<3; i++) {
+    for(j = 0; j<3; j++) {
+      if(sudoku[i + quadranteLinha][j + quadranteColuna] == numeroAtual) {
+        eh_igual = 1;
+        break;
+      }
+    }
+  }
+
+
 
   if (!eh_igual)
     return 1;

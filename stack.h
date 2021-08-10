@@ -9,6 +9,8 @@ typedef struct stack {
     int *vetor;
 } Stack;
 
+int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna);
+
 int espacosVazios(int sudoku[][N]);
 
 Stack* createStack(int tam);

@@ -15,6 +15,8 @@ int main() {
     int totalVazio = espacosVazios(sudoku);
     int i, j, numCelula;
 
+    printf("%d\n", verificaNumeroValido(sudoku, 7, 0, 1));
+
     for(i = 0; i < N; i++) {
         for(j = 0; j < N; j++) {
             if(sudoku[i][j] == 0) {
