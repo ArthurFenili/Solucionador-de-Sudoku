@@ -43,8 +43,6 @@ int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna
     }
   }
 
-
-
   if (!eh_igual)
     return 1;
   else
@@ -52,6 +50,36 @@ int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna
 
 }
 
+void adicionaNumero(int sudoku[][N], int linha, int coluna, int ultimaLinha, int ultimaColuna) {
+  Stack* stack = createStack(espacosVazios(sudoku)+1);
+  int i, j, k;
+
+  /*Percorre toda a matriz procurando posições vazias (0)*/
+  for(i = 0; i < N; i++) {
+    for(j = 0; j < N; j++) {
+      if(sudoku[i][j] == 0) {
+        /*Tenta adicionar os números de 1 a 9 nas posições vazias*/
+        for(k = 1; k<=9; k++) {
+          if(verificaNumeroValido(sudoku, k, linha, coluna)) {
+            /*Se o número for válido, adiciona ele na stack e chama a função recursivamente*/
+            push(stack, k);
+            ultimaLinha = i; /*Salva a coordenada do último valor adicionado*/
+            ultimaColuna = j;
+            adicionaNumero(sudoku, linha, coluna, ultimaLinha, ultimaColuna);
+          }
+        }
+        /*Se os números de 1 a 9 acabaram e ainda existem espaços vazios, desempilha o valor anterior e procura novo número válido*/
+        if(espacosVazios(sudoku)) {
+          pop(stack);
+          sudoku[ultimaLinha][ultimaColuna] = 0;
+        }       
+        
+      }
+    }
+  }
+    
+
+}
 
 /*--------------------------------------------*/
 /*FUNÇÕES STACK*/
@@ -76,13 +104,12 @@ void push (Stack* p, int elem) {
 }
 
 /*Função para desempilhar um elemento!*/
-int pop (Stack* p) {
+void pop (Stack* p) {
   if (empty_stack(p)) {
     printf ("Pilha vazia\n");
     exit(1);
   }
   p->topo--;
-  return p->vetor[p->topo];
 }
 
 /*Função para liberar a memória alocada.*/

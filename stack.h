@@ -11,13 +11,15 @@ typedef struct stack {
 
 int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna);
 
+void adicionaNumero(int sudoku[][N], int linha, int coluna, int ultimaLinha, int ultimaColuna);
+
 int espacosVazios(int sudoku[][N]);
 
 Stack* createStack(int tam);
 
 void push (Stack* p, int elem);
 
-int pop (Stack* p);
+void pop (Stack* p);
 
 int empty_stack (Stack* p);
 
