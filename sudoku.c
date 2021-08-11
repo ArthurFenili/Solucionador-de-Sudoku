@@ -13,8 +13,9 @@ int main() {
 
     
     int i, j, numCelula;
+    Stack* stack = createStack(espacosVazios(sudoku));
 
-    adicionaNumero(sudoku, N, N, 0, 0);
+    adicionaNumero(sudoku, stack, N, N);
 
 
     return 0;

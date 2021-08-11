@@ -7,17 +7,19 @@ typedef struct stack {
     int topo;
     int tam;
     int *vetor;
+    int *vetorX;
+    int *vetorY;
 } Stack;
 
 int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna);
 
-void adicionaNumero(int sudoku[][N], int linha, int coluna, int ultimaLinha, int ultimaColuna);
+void adicionaNumero(int sudoku[][N], Stack* stack, int linha, int coluna);
 
 int espacosVazios(int sudoku[][N]);
 
 Stack* createStack(int tam);
 
-void push (Stack* p, int elem);
+void push (Stack* p, int elem, int posX, int posY);
 
 void pop (Stack* p);
 
