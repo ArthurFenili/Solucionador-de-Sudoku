@@ -13,10 +13,16 @@ int main() {
 
     
     int i, j, numCelula;
-    Stack* stack = createStack(espacosVazios(sudoku));
+    Stack* stack = createStack(espacosVazios(sudoku)+2);
 
     adicionaNumero(sudoku, stack, N, N);
 
+    for (i=0; i<N; i++) {
+        for(j=0; j<N; j++) {
+            printf("%d ", sudoku[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
