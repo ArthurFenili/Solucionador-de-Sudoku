@@ -1,7 +1,12 @@
+#ifndef STACK_H
+#define STACK_H
+
+/*--------------------------------------------*/
+/*FUNÇÕES PARA A MANIPULAÇÃO DA STACK*/
+/*--------------------------------------------*/
+
 #include<stdio.h>
 #include<stdlib.h>
-
-#define N 9
 
 typedef struct stack {
     int topo;
@@ -10,12 +15,6 @@ typedef struct stack {
     int *vetorX;
     int *vetorY;
 } Stack;
-
-int verificaNumeroValido(int sudoku[][N], int numeroAtual, int linha, int coluna);
-
-void adicionaNumero(int sudoku[][N], Stack* stack, int linha, int coluna);
-
-int espacosVazios(int sudoku[][N]);
 
 Stack* createStack(int tam);
 
@@ -28,3 +27,5 @@ int empty_stack (Stack* p);
 int full_stack (Stack* p);
 
 void destroy_stack (Stack* p);
+
+#endif //STACK_H
