@@ -27,7 +27,7 @@ void push (Stack* p, int elem, int posX, int posY) {
 /*Função para desempilhar um elemento!*/
 void pop (Stack* p) {
   if (empty_stack(p)) {
-    printf ("Pilha vazia\n");
+    printf ("TABELA INVÁLIDA. Por favor, tente novamente com outra disposição de números.\n");
     exit(1);
   }
   p->topo--;
